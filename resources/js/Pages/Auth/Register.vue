@@ -24,13 +24,6 @@ const onVerify = (token) => {
     });
 };
 
-const showPassword = ref(false);
-
-const passwordInputType = computed(() => (showPassword.value ? 'text' : 'password'));
-
-const showPassword = ref(false);
-
-const passwordInputType = computed(() => (showPassword.value ? 'text' : 'password'));
 </script>
 
 <template >
