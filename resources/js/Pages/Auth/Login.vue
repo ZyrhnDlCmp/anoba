@@ -5,6 +5,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import VueHcaptcha from '@hcaptcha/vue3-hcaptcha';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 defineProps({
@@ -22,10 +23,20 @@ const form = useForm({
     remember: false,
 });
 
-const submit = () => {
+const onVerify = (token) => {
+    // Handle verification success
+    // You can directly trigger form submission here or set a flag to indicate verification success
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
     });
+};
+
+const submit = () => {
+    // Perform additional login form validation here if needed
+    // Then trigger the captcha verification
+    // The actual form submission will be handled in the onVerify callback
+    // For simplicity, this example triggers the captcha verification immediately
+    onVerify();
 };
 </script>
 
@@ -75,6 +86,16 @@ const submit = () => {
                     <span class="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
             </div>
+            
+            <div class="mt-4">
+                <VueHcaptcha
+                    sitekey="1d151931-97dd-41a5-be11-18a8599a3632"
+                    @verify="onVerify"
+                    @expired="onExpire"
+                    @challenge-expired="onChallengeExpire"
+                    @error="onError"
+                ></VueHcaptcha>
+            </div>
 
             <div class="flex items-center justify-end mt-4">
                 <Link
@@ -90,7 +111,5 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-
     </GuestLayout>
-
 </template>
