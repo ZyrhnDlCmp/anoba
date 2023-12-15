@@ -89,7 +89,7 @@ import { Link } from '@inertiajs/vue3';
                         Sign out
                     </span>
                   </Link>
-                </li>
+                </li> 
               </ul>
             </div>
           </div>

@@ -55,7 +55,15 @@ defineProps({
                                     <InputLabel for="price"  value="Price"/>
                                 </div>
                                 <div class="block w-full">
-                                    <TextInput  id="price"  type="number" v-model="form.price" required />
+                                    <TextInput
+                                        id="price"
+                                        type="number"
+                                        v-model="form.price"
+                                        required
+                                        min="0.01"  
+                                        step="0.01" 
+                                        placeholder="Enter price"
+                                    />
                                 </div>
 
 

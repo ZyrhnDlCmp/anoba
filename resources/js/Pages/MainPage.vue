@@ -93,26 +93,26 @@ defineProps({
   </div>
 </nav>
 
-<div class="pt-16 px-12 pb-8 h-screen w-screen bg-white">
-    <div class="grid grid-cols-3 gap-4 items-center justify-center">
-        <div class="flex justify-center">
-            <img class="h-1/2 w-9/12 object-cover rounded-lg" src="/OIG (1).jpg" alt="">
+<div class="p-6 dark:border-gray-700 mt-14 bg-blue-400">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.jpg" alt="">
         </div>
-        <div class="flex justify-center">
-            <img class="logo h-1/2 w-9/12 object-cover rounded-lg" src="/logo.png" alt="Logo">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.png" alt="">
         </div>
-        <div class="flex justify-center">
-            <img class="h-1/2 w-9/12 object-cover rounded-lg" src="/OIG (2).jpg" alt="">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel2.jpg" alt="">
         </div>
-        <div class="flex justify-center">
-            <img class="h-1/2 w-9/12 object-cover rounded-lg" src="/OIG.r4APf.jpg" alt="">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel3.jpg" alt="">
         </div>
         <div class="flex justify-center items-center">
             <!-- Assuming Carousel is a component -->
             <Carousel />
         </div>
-        <div class="flex justify-center">
-            <img class="h-1/2 w-9/12 object-cover rounded-lg" src="/OIG.jpg" alt="">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.png" alt="">
         </div>
     </div>
 </div>

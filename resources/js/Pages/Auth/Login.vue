@@ -2,11 +2,13 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 import { computed, ref } from 'vue';
+import { computed, ref } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import VueHcaptcha from '@hcaptcha/vue3-hcaptcha';
 import VueHcaptcha from '@hcaptcha/vue3-hcaptcha';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
@@ -28,10 +30,19 @@ const form = useForm({
 const showPassword = ref(false);
 
 const onVerify = (token) => {
+const showPassword = ref(false);
+
+const onVerify = (token) => {
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
     });
 };
+
+const submit = () => {
+    onVerify();
+};
+
+const passwordInputType = computed(() => (showPassword.value ? 'text' : 'password'));
 
 const submit = () => {
     onVerify();
@@ -47,6 +58,7 @@ const passwordInputType = computed(() => (showPassword.value ? 'text' : 'passwor
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
+        
         
         <form @submit.prevent="submit">
             <div>
@@ -91,6 +103,18 @@ const passwordInputType = computed(() => (showPassword.value ? 'text' : 'passwor
                     </div>
                 </label>
             </div>
+
+            
+            <div class="mt-4 flex justify-center items-center">
+                <VueHcaptcha
+                    sitekey="1d151931-97dd-41a5-be11-18a8599a3632"
+                    @verify="onVerify"
+                    @expired="onExpire"
+                    @challenge-expired="onChallengeExpire"
+                    @error="onError"
+                ></VueHcaptcha>
+            </div>
+
 
             
             <div class="mt-4 flex justify-center items-center">

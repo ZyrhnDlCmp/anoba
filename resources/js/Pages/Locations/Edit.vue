@@ -43,12 +43,15 @@ const props = defineProps({
                     <div class="overflow-x-auto  mx-8 ">
                             <form @submit.prevent="update" >
                                 <InputLabel for="location" value="location"/>
-                                <TextInput
-                                    id="code"
-                                    type="text"
-                                    v-model="form.location"
-                                    required
-                                />
+                                <input
+                                        id="location"
+                                        type="text"
+                                        placeholder="Type location here"
+                                        v-model="form.location"
+                                        required
+                                        pattern="[A-Za-z]+"
+                                        title="Please enter letters only in the location field."
+                                    />
                                 <div class=" py-3 md:w-1/3">
                                    <PrimaryButton>Submit</PrimaryButton>
                                 </div>
