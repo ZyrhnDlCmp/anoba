@@ -49,11 +49,11 @@ defineProps({
                     </Link>
                 </div>
                 <div class="flex items-center">
-                        <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-2 text-right">
+                        <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-3 text-right">
                                 <Link
                                     v-if="$page.props.auth.user"
                                     :href="route('dashboard')"
-                                    class="font-semibold text-2xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                    class="k2d-eb text-2xl text-white "
                                     >Dashboard</Link
                                 >
 
