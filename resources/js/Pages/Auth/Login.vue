@@ -1,5 +1,6 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
+import { computed, ref } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -7,7 +8,6 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import VueHcaptcha from '@hcaptcha/vue3-hcaptcha';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
 defineProps({
     canResetPassword: {
@@ -24,21 +24,19 @@ const form = useForm({
     remember: false,
 });
 
+const showPassword = ref(false);
+
 const onVerify = (token) => {
-    // Handle verification success
-    // You can directly trigger form submission here or set a flag to indicate verification success
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
     });
 };
 
 const submit = () => {
-    // Perform additional login form validation here if needed
-    // Then trigger the captcha verification
-    // The actual form submission will be handled in the onVerify callback
-    // For simplicity, this example triggers the captcha verification immediately
     onVerify();
 };
+
+const passwordInputType = computed(() => (showPassword.value ? 'text' : 'password'));
 </script>
 
 <template>
@@ -71,7 +69,7 @@ const submit = () => {
 
                 <TextInput
                     id="password"
-                    type="password"
+                    :type="passwordInputType"
                     class="mt-1 block w-full"
                     v-model="form.password"
                     required
@@ -80,15 +78,21 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
-
             <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                <label class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <Checkbox v-model:checked="showPassword" />
+                        <span class="ml-2 text-sm text-gray-600">Show Password</span>
+                    </div>
+                    <div class="flex items-center">
+                        <Checkbox name="remember" v-model:checked="form.remember" />
+                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    </div>
                 </label>
             </div>
+
             
-            <div class="mt-4">
+            <div class="mt-4 flex justify-center items-center">
                 <VueHcaptcha
                     sitekey="1d151931-97dd-41a5-be11-18a8599a3632"
                     @verify="onVerify"
@@ -97,6 +101,7 @@ const submit = () => {
                     @error="onError"
                 ></VueHcaptcha>
             </div>
+
 
             <div class="flex items-center justify-end mt-4">
                 <Link

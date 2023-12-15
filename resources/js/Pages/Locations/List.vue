@@ -12,6 +12,12 @@ function destroy(id){
     if (confirm('Are you sure you want to delete this Location?')) {
         router.delete(route("location.destroy",id));
     }
+
+
+}
+
+function search(id){
+    
 }
 
 </script>
