@@ -11,24 +11,45 @@ defineProps({
 
 });
 </script>
+<style>
+.inter{
+     font-family: 'Inter', sans-serif;
+   }
+   .k2d-eb{
+     font-family: 'K2D', sans-serif;
+   }
+   .poppins-eb{
+     font-family: 'Poppins', sans-serif;
+   }
+   </style>
 
+]
+<template class="w-screen"> 
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+    </head>
 
-
-<template>
-<nav class="bg-gradient-to-b from-green-400 to-blue-400
-            fixed top-0 z-50 w-full bg-white border-b border-gray-200
-            dark:bg-gray-800 dark:border-gray-700">
+<nav class="bg-gradient bg-trymain
+            fixed top-0 z-50 w-full ">
   <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start">
                     <Link href="/" class="flex ml-2 md:mr-24">
-                    <img src="/storage/partas_logo.png" class="h-8 mr-3" alt="FlowBite Logo" />
-                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Partas Bus Inc</span>
+                    
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white k2d-eb"><font-awesome-icon :icon="['fas', 'right-to-bracket']" />taHack transportation</span>
                     </Link>
-                    <span class="self-center text-xl text-green-800 font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Ticket Reservation System</span>
                 </div>
                 <div class="flex items-center">
-                        <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
+                        <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-2 text-right">
                                 <Link
                                     v-if="$page.props.auth.user"
                                     :href="route('dashboard')"
@@ -40,27 +61,30 @@ defineProps({
                                     <div class="flex justify-between">
                                     <Link
                                         :href="route('login')"
-                                        class="flex font-semibold  text-xl text-gray-600 hover:text-gray-900 dark:text-gray-400
-                                               dark:hover:text-white focus:outline focus:outline-2
-                                               focus:rounded-sm focus:outline-red-500"
+                                        class="flex self-center text-base text-white mr-2
+                                               "
                                         >
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-                                        </svg>
-                                        Log in
+                                        <button
+                                        id="navAction"
+                                        class="mx-auto  hover:bg-white hover:text-gray-800 text-white poppins-eb rounded-full p-2 opacity-75  transform transition hover:scale-105 duration-300 ease-in-out"
+                                    >
+                                        Login
+                                    </button>
                                     </Link>
 
                                     <Link
                                         v-if="canRegister"
                                         :href="route('register')"
-                                        class="flex ml-4 font-semibold text-xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                        </svg>
-
-                                        Register</Link
+                                        class="flex text-base text-white "
+                                        ><button
+                                        id="navAction"
+                                        class="mx-auto  hover:bg-white hover:text-gray-800 text-white poppins-eb rounded-full p-2 opacity-75  transform transition hover:scale-105 duration-300 ease-in-out"
                                     >
+                                        Sign Up
+                                    </button>
+                                        </Link
+                                    >
+                                    
                                     </div>
                                 </template>
                         </div>
@@ -69,29 +93,30 @@ defineProps({
   </div>
 </nav>
 
-<div class="p-6 dark:border-gray-700 mt-14 bg-blue-400">
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.jpg" alt="">
+<div class="pt-16 px-12 pb-8 h-screen w-screen bg-white">
+    <div class="grid grid-cols-3 gap-4 items-center justify-center">
+        <div class="flex justify-center">
+            <img class="h-1/2 w-9/12 object-cover rounded-lg" src="/OIG (1).jpg" alt="">
         </div>
-        <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.png" alt="">
+        <div class="flex justify-center">
+            <img class="logo h-1/2 w-9/12 object-cover rounded-lg" src="/logo.png" alt="Logo">
         </div>
-        <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel2.jpg" alt="">
+        <div class="flex justify-center">
+            <img class="h-1/2 w-9/12 object-cover rounded-lg" src="/OIG (2).jpg" alt="">
         </div>
-        <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel3.jpg" alt="">
+        <div class="flex justify-center">
+            <img class="h-1/2 w-9/12 object-cover rounded-lg" src="/OIG.r4APf.jpg" alt="">
         </div>
-        <div>
+        <div class="flex justify-center items-center">
+            <!-- Assuming Carousel is a component -->
             <Carousel />
         </div>
-        <div>
-            <img class="h-auto max-w-full rounded-lg" src="https://nr4kmtcwpy93.objectstorage.ap-tokyo-1.oci.customer-oci.com/n/nr4kmtcwpy93/b/bucket-20230809-1910/o/carousel1.png" alt="">
+        <div class="flex justify-center">
+            <img class="h-1/2 w-9/12 object-cover rounded-lg" src="/OIG.jpg" alt="">
         </div>
-
     </div>
 </div>
+
 
 </template>
 

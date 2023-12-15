@@ -16,10 +16,11 @@ defineProps({
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100">
+        <!-- <div class="min-h-screen bg-gray-100"> -->
+        <div class="min-h-screen bg-gradient-to-b from-trysecond to-trysecond">
             <Navbar/>
             <Sidebar/>
-            <main class="bg-blue-400 shadow">
+            <main class="bg-gradient-to-b from-trymain to-trysecond">
                 <div class="p-4 sm:ml-64">
                     <div class="p-4 mt-14">
                         <slot/>

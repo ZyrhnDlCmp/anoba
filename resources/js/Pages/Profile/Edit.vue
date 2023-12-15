@@ -15,7 +15,31 @@ defineProps({
 });
 </script>
 
+<style>
+.inter{
+     font-family: 'Inter', sans-serif;
+   }
+   .k2d-eb{
+     font-family: 'K2D', sans-serif;
+   }
+   .poppins-eb{
+     font-family: 'Poppins', sans-serif;
+   }
+   </style>
+
 <template>
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+    </head>
     <Head title="Profile" />
 
     <AuthenticatedLayout>

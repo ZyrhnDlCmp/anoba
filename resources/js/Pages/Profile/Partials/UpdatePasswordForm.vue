@@ -32,20 +32,43 @@ const updatePassword = () => {
     });
 };
 </script>
+<style>
+.inter{
+     font-family: 'Inter', sans-serif;
+   }
+   .k2d-eb{
+     font-family: 'K2D', sans-serif;
+   }
+   .poppins-eb{
+     font-family: 'Poppins', sans-serif;
+   }
+   </style>
 
 <template>
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+    </head>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Update Password</h2>
+            <h2 class="text-lg  text-gray-900 font-semibold poppins-eb ">Update Password</h2>
 
-            <p class="mt-1 text-sm text-gray-600">
+            <p class="mt-1 text-sm text-gray-600 inter">
                 Ensure your account is using a long, random password to stay secure.
             </p>
         </header>
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="current_password" value="Current Password" />
+                <InputLabel  class="poppins-eb font-semibold" for="current_password" value="Current Password" />
 
                 <TextInput
                     id="current_password"
@@ -60,7 +83,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <InputLabel for="password" value="New Password" />
+                <InputLabel class="poppins-eb font-semibold" for="password" value="New Password" />
 
                 <TextInput
                     id="password"
@@ -75,7 +98,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                <InputLabel class="poppins-eb font-semibold" for="password_confirmation" value="Confirm Password" />
 
                 <TextInput
                     id="password_confirmation"
