@@ -17,6 +17,11 @@ export default {
             fontFamily: {
                 sans: ['Roboto', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                tahack: '#4B5E51',
+                tahackSecond : '#646A4E',
+                tahackBg : '#F6F8F5',
+            },
         },
     },
 

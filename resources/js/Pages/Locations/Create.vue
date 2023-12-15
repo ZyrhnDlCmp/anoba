@@ -50,6 +50,7 @@ import TextInput from '@/Components/TextInput.vue'
                                     <input
                                         id="location"
                                         type="text"
+                                        placeholder="Type location here"
                                         v-model="form.location"
                                         required
                                         pattern="[A-Za-z]+"

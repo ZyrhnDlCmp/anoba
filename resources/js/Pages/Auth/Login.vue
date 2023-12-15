@@ -7,6 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import VueHcaptcha from '@hcaptcha/vue3-hcaptcha';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
 defineProps({
     canResetPassword: {
@@ -47,7 +48,7 @@ const submit = () => {
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
-
+        
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="email" value="Email" />
