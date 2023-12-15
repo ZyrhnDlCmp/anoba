@@ -48,12 +48,10 @@ const props = defineProps({
                     <div class="overflow-x-auto  mx-8 ">
                             <form @submit.prevent="update" >
                                 <InputLabel for="code" value="Code"/>
-                                <TextInput
-                                    id="code"
-                                    type="text"
-                                    v-model="form.code"
-                                    required
-                                />
+                                <!-- THE VALIDATED INPUT FIELD FOR CODE-->
+                                <div class="block w-full">
+                                    <TextInput  id="origin" placeholder="ABC-123" pattern="[A-Z]{3}-[0-9]{3}" title="Please enter a code in the format: ABC-123" type="text" v-model="form.code" required/>
+                                </div>
                                 <InputLabel for="type" class="block font-medium text-gray-700">Select Bus Type:</InputLabel>
                                 <select id="type" v-model="form.type" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:outline-none focus:border-indigo-500">
                                     <option value="deluxe">De Luxe</option>
@@ -65,8 +63,10 @@ const props = defineProps({
                                 <TextInput
                                     id="capacity"
                                     type="number"
+                                    min="25"
+                                    placeholder="25-90"
+                                    max="90"
                                     v-model="form.capacity"
-
                                     required
                                 />
                                 <div class=" py-3 md:w-1/3">
