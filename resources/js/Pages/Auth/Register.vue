@@ -21,10 +21,11 @@ const onVerify = (token) => {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
-
 const showPassword = ref(false);
 
-const passwordInputType = computed(() => (showPassword.value ? 'text' : 'password'));
+const passwordInputType = computed(() => {
+  return showPassword.value ? '' : 'password';
+});
 
 </script>
 

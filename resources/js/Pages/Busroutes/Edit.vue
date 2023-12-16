@@ -1,31 +1,24 @@
+
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head,router  } from '@inertiajs/vue3';
-import { defineProps } from 'vue';
-import { reactive,ref } from 'vue'
-
-import PrimaryButton from '@/Components/PrimaryButton.vue'
+import { Head, router } from '@inertiajs/vue3';
+import { defineProps, reactive, computed } from 'vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 
-import { computed } from 'vue';
-
 const props = defineProps({
-      busroute: Object,
-      locations: Object
-  });
+    busroute: Object,
+    locations: Object
+});
 
+const form = reactive({
+    origin: props.busroute.origin,
+    destination: props.busroute.destination,
+});
 
-
-  const form= reactive({
-            _method: 'put',
-            origin: props.busroute.origin,
-            destination: props.busroute.destination,
-    })
-    const existingRoute = computed(() => {
-    return props.locations.find(route => {
-        return route.origin === form.origin && route.destination === form.destination;
-    });
+const existingRoute = computed(() => {
+    return props.locations.find(route => route.origin === form.origin && route.destination === form.destination);
 });
 
 function update() {
@@ -41,46 +34,33 @@ function update() {
         alert('Origin and destination cannot be the same');
     }
 }
-
 </script>
-
-
 
 <template>
     <Head title="Update Bus Route" />
-
     <AuthenticatedLayout>
-
-
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="overflow-hidden ma-8  bg-red-200 rounded-lg border shadow-xs">
-                    <div class="overflow-x-auto  m-8 ">
-                            <form @submit.prevent="update" >
-                                <div class="mb-4">
-                                    <InputLabel for="origin" class="block font-medium text-gray-700">
-                                        Select Origin:
-                                    </InputLabel>
-                                    <select id="route" v-model="form.origin" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:outline-none focus:border-indigo-500">
-                                        <option v-for="location in locations"  :value="location.location">
-                                            {{ location.location }} </option>
-                                   </select>
-                                </div>
-                                <div class="mb-4">
-                                    <InputLabel for="origin" class="block font-medium text-gray-700">
-                                        Select Origin:
-                                    </InputLabel>
-                                    <select id="route" v-model="form.destination" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:outline-none focus:border-indigo-500">
-                                        <option v-for="location in locations"  :value="location.location">
-                                            {{ location.location }} </option>
-                                   </select>
-                                </div>
-                                <PrimaryButton>Submit</PrimaryButton>
-                            </form>
+                <div class="bg-gray-100 overflow-hidden ma-8 rounded-lg border shadow-sm">
+                    <div class="m-8">
+                        <form @submit.prevent="update">
+                            <InputLabel for="origin" value="Select Origin:" />
+                            <select id="origin" v-model="form.origin" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:outline-none focus:border-indigo-500">
+                                <option v-for="location in locations" :value="location.location">{{ location.location }}</option>
+                            </select>
+                            <InputLabel for="destination" value="Select Destination:" class="mt-4" />
+                            <select id="destination" v-model="form.destination" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:outline-none focus:border-indigo-500">
+                                <option v-for="location in locations" :value="location.location">{{ location.location }}</option>
+                            </select>
+                            <div class="mt-6 flex justify-center">
+                                <PrimaryButton class="flex items-center bg-trymain hover:bg-trysecond text-white font-semibold px-3 py-2 rounded">
+                                    <span class="ml-2">Update</span>
+                                </PrimaryButton>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
     </AuthenticatedLayout>
 </template>

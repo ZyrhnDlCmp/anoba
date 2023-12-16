@@ -34,9 +34,6 @@ const onVerify = (token) => {
 
 const passwordInputType = computed(() => (showPassword.value ? 'text' : 'password'));
 
-const submit = () => {
-    onVerify();
-};
 </script>
 
 <template>
