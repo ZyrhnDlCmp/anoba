@@ -1,7 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, router } from '@inertiajs/vue3';
-import NavLink from '@/Components/NavLink.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 
 defineProps({
@@ -74,20 +73,3 @@ bus list
       </div>
     </AuthenticatedLayout>
   </template>
-
-  <script setup>
-  import { ref } from 'vue';
-  import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-  import { Head, Link, router } from '@inertiajs/vue3';
-  import PrimaryButton from '@/Components/PrimaryButton.vue';
-
-  defineProps({
-    buses: Object
-  });
-
-  function destroy(id) {
-    if (confirm('Are you sure you want to delete this Bus?')) {
-      router.delete(route('bus.destroy', { id }));
-    }
-  }
-  </script>
