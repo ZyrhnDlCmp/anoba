@@ -1,17 +1,71 @@
 <template>
-    <div>
-      <pie-chart :data="chartData" :options="chartOptions"></pie-chart>
+    <div class="mb-4 bg-brand-cream p-4 rounded-xl">
+      <h1 class="text-lg font-bold">{{ props.datasets[0].label }}</h1>
+      <canvas ref="canvas"></canvas>
     </div>
   </template>
   
-  <script>
-  import { Pie } from 'vue-chartjs';
+  <script setup>
+  import { ref, onMounted, watch } from 'vue';
+  import Chart from 'chart.js/auto';
   
-  export default {
-    extends: Pie,
-    props: ['data', 'options'],
-    mounted() {
-      this.renderChart(this.data, this.options);
+  const props = defineProps({
+    labels: Array,
+    datasets: Array,
+  });
+  
+  const canvas = ref(null);
+  
+  const plugin = {
+    id: 'customCanvasBackgroundColor',
+    beforeDraw: (chart, args, options) => {
+      const { ctx } = chart;
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.fillStyle = options.color || '#99ffff';
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
     },
   };
+  
+  const createChart = () => {
+    if (canvas.value) {
+      const ctx = canvas.value.getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: props.labels,
+          datasets: props.datasets,
+        },
+        options: {
+          plugins: {
+            customCanvasBackgroundColor: {
+              color: '#FEEDDF',
+            },
+          },
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: 'doughnut',
+              from: 1,
+              to: 0,
+              loop: true,
+              active: 100,
+              resize: 10,
+            },
+          },
+        },
+        plugins: [plugin],
+      });
+  
+      // Save the chart reference to be able to destroy it later
+      canvas.value.__chart__ = myChart;
+    }
+  };
+  
+  onMounted(createChart);
+  
+  // Watch for changes in props and recreate the chart
+  watch(() => [props.labels, props.datasets], createChart, { deep: true });
+  
   </script>

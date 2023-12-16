@@ -1,8 +1,6 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 import { computed, ref } from 'vue';
-import Checkbox from '@/Components/Checkbox.vue';
-import { computed, ref } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -28,9 +26,6 @@ const showPassword = ref(false);
 
 const passwordInputType = computed(() => (showPassword.value ? 'text' : 'password'));
 
-const showPassword = ref(false);
-
-const passwordInputType = computed(() => (showPassword.value ? 'text' : 'password'));
 </script>
 
 <template >
