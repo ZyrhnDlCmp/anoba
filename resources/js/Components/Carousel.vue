@@ -4,18 +4,18 @@
     <!-- Carousel wrapper -->
     <div class="relative  rounded-lg ">
          <!-- Item 1 -->
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
             <img src="/carousel.jpg" class="absolute block w-full  rounded-lg -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 2 -->
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div class=" hidden duration-700 ease-in-out" data-carousel-item>
             <img src="/carousel(2).jpg" class="absolute rounded-lg block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 3 -->
-        <div class="duration-700 ease-in-out" data-carousel-item>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
             <img src="/carousel(3).jpg" class="absolute rounded-lg block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
-        <div class=" duration-700 ease-in-out" data-carousel-item>
+        <div class=" hidden  duration-700 ease-in-out" data-carousel-item>
             <img src="/carousel(4).jpg" class="absolute  rounded-lg block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
 
