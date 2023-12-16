@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bus;
+use App\Models\Bus; 
 use Illuminate\Support\Facades\Request;
 
 use Inertia\Inertia;
@@ -101,4 +101,20 @@ class BusController extends Controller
         Bus::destroy($bus->id);
         to_route('busroutes');
     }
+
+//    public function countTypes()
+// {
+//     $busTypes = Bus::pluck('type')->toArray();
+//     $counts = array_count_values($busTypes);
+
+//     return response()->json($counts);
+// }
+
+        public function countTypes()
+        {
+            $busType = Bus::get("type");
+        }
+
+
+
 }

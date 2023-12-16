@@ -3,6 +3,7 @@
 use App\Http\Controllers\BusrouteController;
 use App\Http\Controllers\BusController;
 use App\Http\Controllers\BusScheduleController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProfileController;
@@ -34,6 +35,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -48,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('destroy_busroute/{busroute}', [BusrouteController::class, 'destroy'])->name('busroutes.destroy');
     // Bus
     Route::get('buses', [BusController::class, 'index'])->name('buses');
+    Route::get('bus-types', [BusController::class, 'countTypes'])->name('buses.types');//I intend to make it count the types
+    Route::get('/api/bus-types', [BusController::class, 'countTypes']);
     Route::get('create_bus', [BusController::class, 'create'])->name('bus.create');
     Route::post('store_bus', [BusController::class, 'store'])->name('bus.store');
     Route::get('edit_bus', [BusController::class, 'edit'])->name('bus.edit');
