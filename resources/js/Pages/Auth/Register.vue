@@ -1,8 +1,6 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 import { computed, ref } from 'vue';
-import Checkbox from '@/Components/Checkbox.vue';
-import { computed, ref } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -23,6 +21,11 @@ const onVerify = (token) => {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
+const showPassword = ref(false);
+
+const passwordInputType = computed(() => {
+  return showPassword.value ? '' : 'password';
+});
 
 </script>
 
